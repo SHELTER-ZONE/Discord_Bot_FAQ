@@ -22,7 +22,12 @@
 
 又有兩種解法...
 1. 你可以直接在當前 VSCode 的 Python 版本環境下，使用 VSCode 內部的終端機再執行 `pip install discord.py` 安裝模組一次
-2. 你可以直接切換 VSCode 裡的 Python 執行環境
+2. 你可以直接切換 VSCode 裡的 Python 執行環境，切換到你安裝 discord.py 模組的那個版本環境下，如下圖：
+
+在 VSCode 的最左下角會顯示你當前的 Python 版本環境，直接點擊它後就可以切換 Python 的版本環境了
+
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/cant_import_discord-3.png)
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/cant_import_discord-4.png)
 
 > 只有單一版本環境：
 
