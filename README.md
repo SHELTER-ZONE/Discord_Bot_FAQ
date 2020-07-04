@@ -1,2 +1,3 @@
-# DC_Bot_FAQ
-Discord Bot 常見問題
+# Discord Bot FAQ 常見問題
+## [discor.py (Python)]()
+
