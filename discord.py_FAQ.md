@@ -11,6 +11,9 @@
 . 出現紅色下劃波浪線錯誤，表示無法 import disocrod 模組<br>
 . 執行時報錯 `ModuleNotFoundError: No module named 'disocrd'`
 
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/cant_import_discord-1.png)
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/cant_import_discord-2.png)
+
 **解決方法：**<br>
 此問題有兩種可能:
 1. 可能你沒安裝 discord.py 模組
