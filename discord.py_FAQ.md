@@ -8,4 +8,6 @@
 ### `import discord.py` 時找不到 `discord.py` 模組
 
 ### `SSL:443` 憑證過期
+**問題**：<br>
+執行時出現 `Cannot connect to host discordapp.com:443 ssl:True ... [CERTIFICATE_VERIFY_FAILED]` 代表 discord 網站的憑證過期
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443.png?raw=true)
