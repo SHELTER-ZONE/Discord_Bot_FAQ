@@ -16,7 +16,19 @@
 1. 可能你沒安裝 discord.py 模組
 2. 可能你電腦裡有多個 Python 版本或環境，比如你電腦裡有裝 3.6 跟 3.8 兩個版本，結果你當初安裝 discord.py 模組是安裝在 Python 3.6，但你 VSCode 的運行環境是 Python 3.8
 
-Step1. 請首先確認你電腦裡是否有多個 Python 版本或環境
+請首先確認你電腦裡是否有多個 Python 版本或環境
+
+> 如果有：
+
+又有兩種解法...
+1. 你可以直接在當前 VSCode 的 Python 版本環境下，使用 VSCode 內部的終端機再執行 `pip install discord.py` 安裝模組一次
+2. 你可以直接切換 VSCode 裡的 Python 執行環境
+
+> 只有單一版本環境：
+
+執行 `pip show discord.py` 確認是否已有安裝 discord.py 模組
+
+沒有的話請執行 `pip install discord.py` 安裝模組
 
 ---
 
