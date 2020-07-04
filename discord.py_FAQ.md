@@ -8,3 +8,4 @@
 ### `import discord.py` 時找不到 `discord.py` 模組
 
 ### `SSL:443` 憑證過期
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443.png?raw=true)
