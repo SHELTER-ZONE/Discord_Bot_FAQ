@@ -56,3 +56,32 @@
 
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443-2.png)
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443-3.png)
+
+---
+
+### 機器人出現`重複的回應`
+**問題**：<br>
+輸入指令後，出現重複的回應，如圖：
+
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/Repeate-Message-1.png)
+
+**解決方法(repl.it 環境)**：<br>
+1. 進入機器人所在之環境
+2. 按下`🛑STOP`
+3. 等待一分鐘，確認機器人未出現在上線名單中，即可重新啟動
+
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/Repeate-Message-5.png)
+
+**解決方法(本機掛載，未寫登出指令)**：<br>
+1. 打開工作管理員
+2. 找到有含`Python`的任務，將他強制停止
+3. 等待一分鐘，確認機器人未出現在上線名單中，即可重新啟動
+
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/Repeate-Message-2.png)
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/Repeate-Message-3.png)
+
+**解決方法(本機掛載，有寫登出指令)**：<br>
+1. 在對話框內輸入登出指令
+2. 等待一分鐘，確認機器人未出現在上線名單中，即可重新啟動
+
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/Repeate-Message-4.png)
