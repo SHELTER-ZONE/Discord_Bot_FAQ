@@ -56,3 +56,7 @@
 
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443-2.png)
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443-3.png)
+
+---
+
+### from...import...紅色波浪線
