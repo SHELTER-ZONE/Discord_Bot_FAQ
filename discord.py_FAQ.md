@@ -60,3 +60,5 @@
 ---
 
 ### from...import...紅色波浪線
+
+### 執行報錯 No module named 'core'
