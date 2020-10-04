@@ -64,6 +64,7 @@
 ### 3. from...import...紅色波浪線
 請先執行程式，如果程式正常執行沒有任何報錯，請直接無視。  
 **問題**：  
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/pylint.png)
 這是 `Pylint` 本身的問題
 > Pylint: Python程式碼提示、檢查工具
 
@@ -71,3 +72,6 @@
 雖然有解決方案，但同一套解法不同人可能不一定會有效，設定也稍微麻煩；況且並不影響真正的執行，所以最有效的解決方案就是無視它!
 
 ### 4. 執行報錯 No module named 'core'
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/noNamedCore.png)
+**問題**：  
+基本上就是你的資料夾層次結構有錯誤
