@@ -3,11 +3,12 @@
 ## Menu
 1. [`import discord.py` 時找不到 `discord.py` 模組](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#import-discordpy-%E6%99%82%E6%89%BE%E4%B8%8D%E5%88%B0-discordpy-%E6%A8%A1%E7%B5%84)
 2. [`SSL:443` 憑證過期](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#ssl443-%E6%86%91%E8%AD%89%E9%81%8E%E6%9C%9F)
-3. []
+3. [from...import...紅色波浪線]()
+4. [執行報錯 No module named 'core']()
 4. TypeError: module.__init__() takes at most 2 arguments (3 given)
 ---
 
-### `import discord.py` 時找不到 `discord.py` 模組
+### 1. `import discord.py` 時找不到 `discord.py` 模組
 **問題**：<br>
 . 出現紅色下劃波浪線錯誤，表示無法 import disocrod 模組<br>
 . 執行時報錯 `ModuleNotFoundError: No module named 'disocrd'`
@@ -41,13 +42,13 @@
 
 ---
 
-### `SSL:443` 憑證過期
-**問題**：<br>
+### 2. `SSL:443` 憑證過期
+**問題**：  
 執行時出現 `Cannot connect to host discordapp.com:443 ssl:True ... [CERTIFICATE_VERIFY_FAILED]`
 
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/ssl_443.png?raw=true)
 
-**解決方法：**<br>
+**解決方法：**  
 此為電腦中 discord 網站的憑證未更新而過期導致
 
 1. 右鍵管理員權限執行 IE
@@ -60,6 +61,12 @@
 
 ---
 
-### from...import...紅色波浪線
+### 3. from...import...紅色波浪線
+請先執行程式，如果程式正常執行沒有任何報錯，請直接無視。
+**問題**：  
+這是 `Pylint` 本身的問題
+> Pylint: Python程式碼提示、檢查工具
+**解決方法：**  
+雖然有解決方案，但同一套解法不同人可能不一定會有效，設定也稍微麻煩；況且並不影響真正的執行，所以最有效的解決方案就是無視它!
 
-### 執行報錯 No module named 'core'
+### 4. 執行報錯 No module named 'core'
