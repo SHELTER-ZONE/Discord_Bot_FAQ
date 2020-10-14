@@ -83,8 +83,8 @@
 這在官方文件的常見問題上已經有寫出:
 [Why does on_message make my commands stop working?](https://discordpy.readthedocs.io/en/latest/faq.html?highlight=on_message#why-does-on-message-make-my-commands-stop-working)
 
-**解決方法：**
-兩種方式:
+**解決方法：**  
+以下三種方式:
 1. 在on_message 中的最後一行加上 `await bot.process_commands()`
 ```python
 @bot.event
