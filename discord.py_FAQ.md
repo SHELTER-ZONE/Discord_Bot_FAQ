@@ -93,5 +93,11 @@ async def on_message(message):
 
     await bot.process_commands(message)
 ```
-
-2. 改用Cog架構
+2. 不要使用 `@bot.event` 改用 `@bot.listen('on_message')`  
+```python
+@bot.listen('on_message')
+async def whatever_you_want_to_call_it(message):
+    # do stuff here
+    # do not process commands here
+```
+3. 改用Cog架構
