@@ -5,7 +5,8 @@
 2. [`SSL:443` 憑證過期](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#ssl443-%E6%86%91%E8%AD%89%E9%81%8E%E6%9C%9F)
 3. [from...import...紅色波浪線](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#3-fromimport紅色波浪線)
 4. [執行報錯 No module named 'core']()
-4. TypeError: module.__init__() takes at most 2 arguments (3 given)
+5. [on_message 導致其他指令無效]()
+. TypeError: module.__init__() takes at most 2 arguments (3 given)
 ---
 
 ### 1. `import discord.py` 時找不到 `discord.py` 模組
@@ -75,3 +76,22 @@
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/noNamedCore.png)
 **問題**：  
 基本上就是你的資料夾層次結構有錯誤
+
+### 5. on_message 導致指令無效
+**問題**：  
+如果你並不是用Cog架構，而是把所有指令都寫在一個檔案內，就會發生on_message與command衝突與導致指令無效  
+這在官方文件的常見問題上已經有寫出:
+[Why does on_message make my commands stop working?](https://discordpy.readthedocs.io/en/latest/faq.html?highlight=on_message#why-does-on-message-make-my-commands-stop-working)
+
+**解決方法：**
+兩種方式:
+1. 在on_message 中的最後一行加上 `await bot.process_commands()`
+```python
+@bot.event
+async def on_message(message):
+    # do some extra stuff here
+
+    await bot.process_commands(message)
+```
+
+2. 改用Cog架構
