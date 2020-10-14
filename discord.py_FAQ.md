@@ -73,9 +73,11 @@
 雖然有解決方案，但同一套解法不同人可能不一定會有效，設定也稍微麻煩；況且並不影響真正的執行，所以最有效的解決方案就是無視它!
 
 ## 4. 執行報錯 No module named 'core'
-![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/noNamedCore.png)
+
 **問題**：  
-基本上就是你的資料夾層次結構有錯誤
+![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/noNamedCore.png)  
+**解決方法：**  
+基本上就是你的資料夾層次結構有錯誤，檢查 core 資料是否被放到其他資料夾中，所有資料夾應該是要在同一層級
 
 ## 5. on_message 導致指令無效
 **問題**：  
