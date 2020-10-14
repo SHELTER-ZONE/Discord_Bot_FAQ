@@ -4,8 +4,8 @@
 1. [`import discord.py` 時找不到 `discord.py` 模組](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#import-discordpy-%E6%99%82%E6%89%BE%E4%B8%8D%E5%88%B0-discordpy-%E6%A8%A1%E7%B5%84)
 2. [`SSL:443` 憑證過期](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#ssl443-%E6%86%91%E8%AD%89%E9%81%8E%E6%9C%9F)
 3. [from...import...紅色波浪線](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#3-fromimport紅色波浪線)
-4. [執行報錯 No module named 'core']()
-5. [on_message 導致其他指令無效]()
+4. [執行報錯 No module named 'core'](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#4-執行報錯-no-module-named-core)
+5. [on_message 導致其他指令無效](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#5-on_message-導致指令無效)  
 . TypeError: module.__init__() takes at most 2 arguments (3 given)
 ---
 
