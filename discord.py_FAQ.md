@@ -9,7 +9,7 @@
 . TypeError: module.__init__() takes at most 2 arguments (3 given)
 ---
 
-### 1. `import discord.py` 時找不到 `discord.py` 模組
+## 1. `import discord.py` 時找不到 `discord.py` 模組
 **問題**：<br>
 . 出現紅色下劃波浪線錯誤，表示無法 import disocrod 模組<br>
 . 執行時報錯 `ModuleNotFoundError: No module named 'disocrd'`
@@ -43,7 +43,7 @@
 
 ---
 
-### 2. `SSL:443` 憑證過期
+## 2. `SSL:443` 憑證過期
 **問題**：  
 執行時出現 `Cannot connect to host discordapp.com:443 ssl:True ... [CERTIFICATE_VERIFY_FAILED]`
 
@@ -62,7 +62,7 @@
 
 ---
 
-### 3. from...import...紅色波浪線
+## 3. from...import...紅色波浪線
 請先執行程式，如果程式正常執行沒有任何報錯，請直接無視。  
 **問題**：  
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/pylint.png)
@@ -72,12 +72,12 @@
 **解決方法：**  
 雖然有解決方案，但同一套解法不同人可能不一定會有效，設定也稍微麻煩；況且並不影響真正的執行，所以最有效的解決方案就是無視它!
 
-### 4. 執行報錯 No module named 'core'
+## 4. 執行報錯 No module named 'core'
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/noNamedCore.png)
 **問題**：  
 基本上就是你的資料夾層次結構有錯誤
 
-### 5. on_message 導致指令無效
+## 5. on_message 導致指令無效
 **問題**：  
 如果你並不是用Cog架構，而是把所有指令都寫在一個檔案內，就會發生on_message與command衝突與導致指令無效  
 這在官方文件的常見問題上已經有寫出:
