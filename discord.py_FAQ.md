@@ -6,6 +6,7 @@
 3. [from...import...紅色波浪線](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#3-fromimport紅色波浪線)
 4. [執行報錯 No module named 'core'](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#4-執行報錯-no-module-named-core)
 5. [on_message 導致其他指令無效](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#5-on_message-導致指令無效)  
+6. [on_members_join 和 on_members_leave 失效]()
 . TypeError: module.__init__() takes at most 2 arguments (3 given)
 ---
 
@@ -103,3 +104,10 @@ async def whatever_you_want_to_call_it(message):
     # do not process commands here
 ```
 3. 改用Cog架構
+
+## 6. on_members_join 和 on_members_leave 失效
+**問題**：  
+Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的變化。  
+
+**解決方法：**  
+較詳細的影片說明: [1.5 重大更新](https://youtu.be/clqFPOJkkrI)
