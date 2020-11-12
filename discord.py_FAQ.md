@@ -134,4 +134,4 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 ![](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/launcher.png)
 
 如果排除以上兩種情況：
-1. 確認 `setting.json` 檔案是否與 `bot.py` 檔案再同一個資料夾內
+1. 確認 `setting.json` 檔案是否與 `bot.py` 檔案於同個資料夾內
