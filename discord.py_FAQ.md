@@ -126,11 +126,11 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 **解決方法：**  
 如果你是使用F5執行而爆出此錯誤，可能是以下原因：  
 １. 你的 `launch.json` 啟動器設定檔沒設定好  
-在你的launch.json設定檔中，應當要有下圖兩個啟動器中其中一個，新增以下啟動器設定檔存檔後，請選擇該啟動器再執行
+在你的launch.json設定檔中，應當要有下圖兩個啟動器中其中一個，新增以下啟動器設定檔存檔後，請選擇該啟動器再執行  
 ![](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/launch_json.png)
 
 ２. 你沒選擇正確的啟動器執行  
-再debugger頁面上方的啟動器選項中，應當選擇正確的啟動器
+再debugger頁面上方的啟動器選項中，應當選擇正確的啟動器  
 ![](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/launcher.png)
 
 如果排除以上兩種情況：
