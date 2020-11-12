@@ -7,7 +7,7 @@
 4. [執行報錯 No module named 'core'](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#4-執行報錯-no-module-named-core)
 5. [on_message 導致其他指令無效](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#5-on_message-導致指令無效)  
 6. [on_members_join 和 on_members_leave 失效](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#6-on_members_join-和-on_members_leave-失效)  
-7. [讀不到 setting.json]()
+7. [讀不到 setting.json](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#4-讀不到-settingjson)
 ---
 
 ## 1. `import discord.py` 時找不到 `discord.py` 模組
@@ -126,6 +126,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 **解決方法：**  
 如果你是使用F5執行而爆出此錯誤，可能是以下原因：  
 １. 你的 `launch.json` 啟動器設定檔沒設定好  
+![](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/launch_json.png)
 
 ２. 你沒選擇正確的啟動器執行  
 ![](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/launcher.png)
