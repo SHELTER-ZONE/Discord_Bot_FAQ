@@ -1,22 +1,18 @@
+<script setup>
+import Block from '../components/Block.vue'
+</script>
+
+
 # Discord.py FAQ
 
-## Menu
-1. [import discord.py 時找不到 discord.py 模組](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#import-discordpy-%E6%99%82%E6%89%BE%E4%B8%8D%E5%88%B0-discordpy-%E6%A8%A1%E7%B5%84)
-2. [SSL:443 憑證過期](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#ssl443-%E6%86%91%E8%AD%89%E9%81%8E%E6%9C%9F)
-3. [from...import...紅色波浪線](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#3-fromimport紅色波浪線)
-4. [執行報錯 No module named 'core'](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#4-執行報錯-no-module-named-core)
-5. [on_message 導致其他指令無效](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#5-on_message-導致指令無效)  
-6. [on_members_join 和 on_members_leave 失效](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#6-on_members_join-和-on_members_leave-失效)  
-7. [讀不到 setting.json](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md#4-讀不到-settingjson)
----
+## `import discord.py` 時找不到 `discord.py` 模組
+**問題：**
+<Block type="title" content="問題" />
+- 出現紅色下劃波浪線錯誤，表示無法 import disocrod 模組<br>
+- 執行時報錯 `ModuleNotFoundError: No module named 'disocrd'`
 
-## 1. `import discord.py` 時找不到 `discord.py` 模組
-**問題**：<br>
-. 出現紅色下劃波浪線錯誤，表示無法 import disocrod 模組<br>
-. 執行時報錯 `ModuleNotFoundError: No module named 'disocrd'`
-
-![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/cant_import_discord-1.png)
-![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/cant_import_discord-2.png)
+![img](/imgs/cant_import_discord-1.png)
+![img](/imgs/cant_import_discord-2.png)
 
 **解決方法：**<br>
 此問題有兩種可能:
@@ -44,7 +40,7 @@
 
 ---
 
-## 2. `SSL:443` 憑證過期
+## `SSL:443` 憑證過期
 **問題**：  
 執行時出現 `Cannot connect to host discordapp.com:443 ssl:True ... [CERTIFICATE_VERIFY_FAILED]`
 
@@ -63,7 +59,7 @@
 
 ---
 
-## 3. from...import...紅色波浪線
+## from...import...紅色波浪線
 請先執行程式，如果程式正常執行沒有任何報錯，請直接無視。  
 **問題**：  
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/pylint.png)
@@ -73,14 +69,14 @@
 **解決方法：**  
 雖然有解決方案，但同一套解法不同人可能不一定會有效，設定也稍微麻煩；況且並不影響真正的執行，所以最有效的解決方案就是無視它!
 
-## 4. 執行報錯 No module named 'core'
+## 執行報錯 No module named 'core'
 
 **問題**：  
 ![img](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/src/noNamedCore.png)  
 **解決方法：**  
 基本上就是你的資料夾層次結構有錯誤，檢查 core 資料是否被放到其他資料夾中，所有資料夾應該是要在同一層級
 
-## 5. on_message 導致指令無效
+## on_message 導致指令無效
 **問題**：  
 如果你並不是用Cog架構，而是把所有指令都寫在一個檔案內，就會發生on_message與command衝突與導致指令無效  
 這在官方文件的常見問題上已經有寫出:
@@ -105,7 +101,7 @@ async def whatever_you_want_to_call_it(message):
 ```
 3. 改用Cog架構
 
-## 6. on_members_join 和 on_members_leave 失效
+## on_members_join 和 on_members_leave 失效
 **問題**：  
 Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的變化。  
 
@@ -113,7 +109,7 @@ Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的�
 較詳細的影片說明: [1.5 重大更新](https://youtu.be/clqFPOJkkrI)
 
 
-## 4. 讀不到 setting.json
+## 讀不到 setting.json
 **問題**：  
 執行bot報錯找不到、讀不到 setting.json 檔案
 ```py
