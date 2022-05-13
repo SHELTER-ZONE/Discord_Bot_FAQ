@@ -1,8 +1,12 @@
 <template>
-  <div class="block" :class="{
-    title: type === 'title'
-  }">
-  {{ content }}
+  <div class="block">
+    <div class="decoration" :class="type"></div>
+    <div class="body">
+      <div class="title">{{title}}</div>
+      <div  class="content">
+        <slot />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,15 +16,42 @@ defineProps({
   type: {
     type: String,
   },
-  content: {
+  title: {
     type: String, 
   }
 })
 </script>
 
 <style scoped>
-.title {
-  background: skyblue;
-  font-weight: 500;
+.block {
+  background: rgba(0, 0, 0, .05);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  display: flex;
 }
+.decoration {
+  width: 5px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px
+}
+
+.content {
+  padding: 10px;
+}
+
+.danger {
+  background: LightCoral;
+}
+
+.success {
+  background: LightSeaGreen;
+}
+
 </style>
