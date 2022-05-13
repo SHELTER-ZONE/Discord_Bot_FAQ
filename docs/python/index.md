@@ -140,7 +140,7 @@ async def whatever_you_want_to_call_it(message):
 
 <Block type="success" title="解決方法">
 
-較詳細的影片說明: [1.5 重大更新](https://youtu.be/clqFPOJkkrI)
+請參考影片說明: [1.5 重大更新](https://youtu.be/clqFPOJkkrI)
 
 </Block>
 
