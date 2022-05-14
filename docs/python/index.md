@@ -4,8 +4,6 @@ import ErrorMsg from '../components/ErrorMsg.vue'
 </script>
 
 
-# Discord.py FAQ
-
 ## `import discord.py` 時找不到 `discord.py` 模組
 
 <Block type="danger" title="問題">

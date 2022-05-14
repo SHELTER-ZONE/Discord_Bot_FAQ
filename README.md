@@ -1,4 +1,13 @@
-# Discord Bot FAQ 常見問題
-## [discord.py (Python 版本)](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md)
+# 關於本文件
+提供 discord bot 開發過程中，初學者常遇到的問題，提供問題說明與解決方案。  
 
-## [discord.js (Node.js 版本)](https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/blob/master/discord.py_FAQ.md)
+## 協作/貢獻方式
+任何人都可以提交/提供
+
+**1. 提交 PR (Pull Request)**  
+fork 專案，更改新增內容後提交 PR  
+(該方法須具備開發與 github 使用能力)
+
+**2. 使用 Issue 提交**  
+直接在該專案以發起 Issue 的方式提供想要修改/新增的內容
+之後會由維護開發人員將內容更新
