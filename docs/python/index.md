@@ -173,5 +173,26 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 
 </Block>
 
+## load_extension 找不到 ./cmds
+<Block type="danger" title="問題">
+<div>執行後在 bot.load_extension 處報錯，<ErrorMsg text="ModuleNotFoundError: No module named 'cmds'" /></div>
+
+![img](/imgs/cmds_not_found.png)
+
+</Block>
+
+<Block type="success" title="解決方法">
+
+請確認資料夾結構是否正確
+
+`os.listdir("./cmds")` 中的路徑： `./cmds` 代表的是 `當前資料夾中底下的cmds資料夾`  
+所以 `bot.py` 與 `cmds` 資料夾應該要在同一層級的資料夾內
+
+![img](/imgs/cmds_folder.png)
+
+
+
+
+</Block>
 
 
