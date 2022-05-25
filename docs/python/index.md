@@ -190,9 +190,30 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 
 ![img](/imgs/cmds_folder.png)
 
-
-
-
 </Block>
 
 
+## xxxx is not a package
+<Block type="danger" title="問題">
+<div>執行 bot 後抱錯，找不到 discord 函數庫</div>
+
+```py
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\pr\Discord_Bot_FAQ\demo\errors\main.py", line 2, in <module>
+    from discord.ext import commands
+ModuleNotFoundError: No module named 'discord.ext'; 'discord' is not a package
+```
+
+![img](/imgs/python/xxxx-is-not-a-package/error-src.jpg)
+
+</Block>
+
+<Block type="success" title="解決方法">
+原因：
+檔案/資料夾 命名與函數庫名稱相同
+
+請嘗試將衝突到的檔案/資料夾重新命名
+
+如果仍然還是錯誤請嘗試 [import-discord-py-時找不到-discord-py-模組](./#import-discord-py-時找不到-discord-py-模組)
+
+</Block>
