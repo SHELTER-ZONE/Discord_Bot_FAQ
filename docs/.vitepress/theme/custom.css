@@ -1,0 +1,6 @@
+.custom-block.tip,
+.custom-block.info,
+.custom-block.warning,
+.custom-block.danger {
+  border-radius: 0.375rem;
+}
