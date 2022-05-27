@@ -210,9 +210,15 @@ ModuleNotFoundError: No module named 'discord.ext'; 'discord' is not a package
 
 <Block type="success" title="解決方法">
 原因：
-檔案/資料夾 命名與函數庫名稱相同
 
-請嘗試將衝突到的檔案/資料夾重新命名
+檔案/資料夾 命名與函數庫名稱相同
+<br />
+
+例:
+```py
+import discord
+```
+檔案/資料夾 不可命名為 `discord`，請嘗試將衝突到的檔案/資料夾重新命名。
 
 如果仍然還是錯誤請嘗試 [import-discord-py-時找不到-discord-py-模組](./#import-discord-py-時找不到-discord-py-模組)
 
