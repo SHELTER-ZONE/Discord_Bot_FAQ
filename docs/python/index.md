@@ -246,7 +246,7 @@ async def set_channel(self, ctx, channelId: int):
   await ctx.send(f'Set channel to {self.channel.mention}')
 ```
 
-應該位於 class Task 中
+以上程式碼區塊應位於 class Task 區塊內
 
 所以應該要這樣寫:
 
