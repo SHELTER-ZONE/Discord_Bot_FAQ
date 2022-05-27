@@ -66,10 +66,10 @@ watch(activeCodeTabIndex, (index) => activateCodeTab(index))
 .code-types li.active {
   border-bottom: var(--c-brand) 1px solid;
 }
-.code-group >>> div[title]:not([active]) {
+.code-group:deep(div[title]):not([active]) {
   display: none;
 }
-.code-group >>> div[title] [class*='language-'] pre {
+.code-group:deep(div[title]) [class*='language-'] pre {
   padding-top: 1rem;
 }
 </style>
