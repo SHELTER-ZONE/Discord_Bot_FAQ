@@ -195,7 +195,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 
 ## xxxx is not a package
 <Block type="danger" title="問題">
-<div>執行 bot 後抱錯，找不到 discord 函數庫</div>
+<div>執行 bot 後報錯，找不到 discord 函數庫</div>
 
 ```py
 Traceback (most recent call last):
