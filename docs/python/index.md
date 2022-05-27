@@ -196,8 +196,8 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 
 </Block>
 
-
 ## 有些在 cog 裡的指令偵測不到
+
 <Block type="danger" title="問題">
 <div>執行後運行 `help` 指令早不到定義的指令</div>
 出錯程式：
@@ -238,15 +238,18 @@ def setup(bot):
 <Block type="success" title="解決方法">
 
 請確認縮排是否正確
+
 ```py
 @commands.command()
 async def set_channel(self, ctx, channelId: int):
   ...略
   await ctx.send(f'Set channel to {self.channel.mention}')
 ```
+
 應該位於 class Task 中
 
 所以應該要這樣寫:
+
 ```py
 ...略
 class Task(Cog_Extension):
