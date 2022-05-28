@@ -195,3 +195,78 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 ![img](/imgs/cmds_folder.png)
 
 </Block>
+
+## 有些在 cog 裡的指令偵測不到
+
+<Block type="danger" title="問題">
+<div>執行後運行 `help` 指令早不到定義的指令</div>
+出錯程式：
+
+```py
+import asyncio
+from discord.ext import commands
+
+from core.classes import Cog_Extension
+
+
+class Task(Cog_Extension):
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+
+    async def interval():
+      await self.bot.wait_until_ready()
+      self.channel = self.bot.get_channel(123456789)
+      while not self.bot.is_closed():
+        await self.channel.send("hi I am running!")
+        await asyncio.sleep(60)
+
+      self.bg_task = self.bot.loop.create_task(interval())
+
+
+@commands.command()
+async def set_channel(self, ctx, channelId: int):
+  self.channel = self.bot.get_channel(channelId)
+  await ctx.send(f'Set channel to {self.channel.mention}')
+
+
+def setup(bot):
+  bot.add_cog(Task(bot))
+```
+
+</Block>
+
+<Block type="success" title="解決方法">
+
+請確認縮排是否正確
+
+```py
+@commands.command()
+async def set_channel(self, ctx, channelId: int):
+  ...略
+  await ctx.send(f'Set channel to {self.channel.mention}')
+```
+
+以上程式碼區塊應位於 class Task 區塊內
+
+所以應該要這樣寫:
+
+```py
+...略
+class Task(Cog_Extension):
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+
+    async def interval():
+      ...略
+
+  @commands.command()
+  async def set_channel(self, ctx, channelId: int):
+    self.channel = self.bot.get_channel(channelId)
+    await ctx.send(f'Set channel to {self.channel.mention}')
+
+
+def setup(bot):
+  bot.add_cog(Task(bot))
+```
+
+</Block>
