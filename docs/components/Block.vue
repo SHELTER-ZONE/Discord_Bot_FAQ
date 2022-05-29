@@ -2,8 +2,8 @@
   <div class="block">
     <div class="decoration" :class="type"></div>
     <div class="body">
-      <div class="title">{{title}}</div>
-      <div  class="content">
+      <div class="title">{{ title }}</div>
+      <div class="content">
         <slot />
       </div>
     </div>
@@ -11,20 +11,19 @@
 </template>
 
 <script setup>
-
 defineProps({
   type: {
     type: String,
   },
   title: {
-    type: String, 
-  }
-})
+    type: String,
+  },
+});
 </script>
 
 <style scoped>
 .block {
-  background: rgba(0, 0, 0, .05);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -39,7 +38,7 @@ defineProps({
 .title {
   font-size: 20px;
   font-weight: 700;
-  padding: 10px
+  padding: 10px;
 }
 
 .content {
@@ -53,5 +52,4 @@ defineProps({
 .success {
   background: LightSeaGreen;
 }
-
 </style>
