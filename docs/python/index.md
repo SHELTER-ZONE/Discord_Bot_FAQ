@@ -136,7 +136,7 @@ async def whatever_you_want_to_call_it(message):
 ## on_members_join 和 on_members_leave 失效
 
 <Block type="danger" title="問題">
-<div>Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的變化。  </div>
+<div>Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的變化。</div>
 </Block>
 
 <Block type="success" title="解決方法">
@@ -196,6 +196,22 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 
 </Block>
 
+## xxxx is not a package
+
+<Block type="danger" title="問題">
+<div>執行 bot 後報錯，找不到 discord 函數庫</div>
+
+```py
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\pr\Discord_Bot_FAQ\demo\errors\main.py", line 2, in <module>
+    from discord.ext import commands
+ModuleNotFoundError: No module named 'discord.ext'; 'discord' is not a package
+```
+
+![img](/imgs/python/xxxx-is-not-a-package/error-src.jpg)
+
+</Block>
+
 ## 有些在 cog 裡的指令偵測不到
 
 <Block type="danger" title="問題">
@@ -236,6 +252,20 @@ def setup(bot):
 </Block>
 
 <Block type="success" title="解決方法">
+原因：
+
+檔案/資料夾 命名與函數庫名稱相同
+<br />
+
+例:
+
+```py
+import discord
+```
+
+檔案/資料夾 不可命名為 `discord`，請嘗試將衝突到的檔案/資料夾重新命名。
+
+如果仍然還是錯誤請嘗試 [import-discord-py-時找不到-discord-py-模組](./#import-discord-py-時找不到-discord-py-模組)
 
 請確認縮排是否正確
 
