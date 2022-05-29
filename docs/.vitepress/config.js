@@ -7,14 +7,14 @@ export default defineConfig({
   base: '/Discord_Bot_FAQ/',
 
   themeConfig: {
+    repo: 'SHELTER-ZONE/Discord_Bot_FAQ',
+    docsDir: 'docs',
+    docsBranch: 'master',
+    editLinks: true,
+    editLinkText: '更改此頁面',
+    lastUpdated: '最近更新時間',
+
     sidebar: routes,
-    nav: [
-      { text: 'Home', link: '/' },
-      {
-        text: 'Github',
-        target: '_blank',
-        link: 'https://github.com/SHELTER-ZONE/Discord_Bot_FAQ',
-      },
-    ],
+    nav: [{ text: 'Home', link: '/' }],
   },
 })
