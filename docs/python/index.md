@@ -136,7 +136,7 @@ async def whatever_you_want_to_call_it(message):
 ## on_members_join 和 on_members_leave 失效
 
 <Block type="danger" title="問題">
-<div>Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的變化。  </div>
+<div>Discord.py 在版本 1.5.0 進行了重大更新，因此程式碼有些許的變化。</div>
 </Block>
 
 <Block type="success" title="解決方法">
@@ -196,8 +196,8 @@ FileNotFoundError: [Errno 2] No such file or directory: 'setting.json'
 
 </Block>
 
-
 ## xxxx is not a package
+
 <Block type="danger" title="問題">
 <div>執行 bot 後報錯，找不到 discord 函數庫</div>
 
@@ -212,6 +212,45 @@ ModuleNotFoundError: No module named 'discord.ext'; 'discord' is not a package
 
 </Block>
 
+## 有些在 cog 裡的指令偵測不到
+
+<Block type="danger" title="問題">
+<div>執行後運行 `help` 指令早不到定義的指令</div>
+出錯程式：
+
+```py
+import asyncio
+from discord.ext import commands
+
+from core.classes import Cog_Extension
+
+
+class Task(Cog_Extension):
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+
+    async def interval():
+      await self.bot.wait_until_ready()
+      self.channel = self.bot.get_channel(123456789)
+      while not self.bot.is_closed():
+        await self.channel.send("hi I am running!")
+        await asyncio.sleep(60)
+
+      self.bg_task = self.bot.loop.create_task(interval())
+
+
+@commands.command()
+async def set_channel(self, ctx, channelId: int):
+  self.channel = self.bot.get_channel(channelId)
+  await ctx.send(f'Set channel to {self.channel.mention}')
+
+
+def setup(bot):
+  bot.add_cog(Task(bot))
+```
+
+</Block>
+
 <Block type="success" title="解決方法">
 原因：
 
@@ -219,11 +258,45 @@ ModuleNotFoundError: No module named 'discord.ext'; 'discord' is not a package
 <br />
 
 例:
+
 ```py
 import discord
 ```
+
 檔案/資料夾 不可命名為 `discord`，請嘗試將衝突到的檔案/資料夾重新命名。
 
 如果仍然還是錯誤請嘗試 [import-discord-py-時找不到-discord-py-模組](./#import-discord-py-時找不到-discord-py-模組)
+
+請確認縮排是否正確
+
+```py
+@commands.command()
+async def set_channel(self, ctx, channelId: int):
+  ...略
+  await ctx.send(f'Set channel to {self.channel.mention}')
+```
+
+以上程式碼區塊應位於 class Task 區塊內
+
+所以應該要這樣寫:
+
+```py
+...略
+class Task(Cog_Extension):
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+
+    async def interval():
+      ...略
+
+  @commands.command()
+  async def set_channel(self, ctx, channelId: int):
+    self.channel = self.bot.get_channel(channelId)
+    await ctx.send(f'Set channel to {self.channel.mention}')
+
+
+def setup(bot):
+  bot.add_cog(Task(bot))
+```
 
 </Block>
