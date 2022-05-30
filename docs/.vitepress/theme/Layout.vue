@@ -5,45 +5,45 @@ import Layout from 'vitepress/dist/client/theme-default/Layout.vue'
 import { onMounted, onUnmounted } from 'vue'
 
 /* copy code button */
-const observer = new MutationObserver(() => {
-  document
-    .querySelectorAll('div[class*=language-]:not(.add-copy)')
-    .forEach((el) => {
-      const copyButton = document.createElement('button')
-
-      el.style.position = 'relative'
-
-      copyButton.title = '複製程式'
-      copyButton.classList.add('code-copy-button')
-      copyButton.appendChild(document.createElement('span'))
-
-      el.classList.add('add-copy')
-
-      copyButton.onclick = () => {
-        const text = el.innerText
-        navigator?.clipboard.writeText(text).catch(() => {
-          const textBox = document.createElement('textarea')
-          document.body.appendChild(textBox)
-          textBox.style.width = '0'
-          textBox.style.height = '0'
-          textBox.value = text
-          textBox.select()
-          document.execCommand('copy')
-          textBox.remove()
-        })
-      }
-
-      el.appendChild(copyButton)
-    })
-})
 onMounted(() => {
+  const observer = new MutationObserver(() => {
+    document
+      .querySelectorAll('div[class*=language-]:not(.add-copy)')
+      .forEach((el) => {
+        const copyButton = document.createElement('button')
+
+        el.style.position = 'relative'
+
+        copyButton.title = '複製程式'
+        copyButton.classList.add('code-copy-button')
+        copyButton.appendChild(document.createElement('span'))
+
+        el.classList.add('add-copy')
+
+        copyButton.onclick = () => {
+          const text = el.innerText
+          navigator?.clipboard.writeText(text).catch(() => {
+            const textBox = document.createElement('textarea')
+            document.body.appendChild(textBox)
+            textBox.style.width = '0'
+            textBox.style.height = '0'
+            textBox.value = text
+            textBox.select()
+            document.execCommand('copy')
+            textBox.remove()
+          })
+        }
+
+        el.appendChild(copyButton)
+      })
+  })
   observer.observe(document.querySelector('html'), {
     subtree: true,
     childList: true,
     characterDataOldValue: true,
   })
+  onUnmounted(() => observer.disconnect())
 })
-onUnmounted(() => observer.disconnect())
 </script>
 
 <style>
