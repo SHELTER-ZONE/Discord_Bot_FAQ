@@ -17,4 +17,5 @@ export default defineConfig({
     sidebar: routes,
     nav: [{ text: 'Home', link: '/' }],
   },
+  markdown: { lineNumbers: true },
 })
