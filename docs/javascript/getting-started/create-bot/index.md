@@ -38,7 +38,7 @@ console.log(token)
 
 ## 使用 `dotenv`
 
-如果你使用 git，請將 `config.json` 文件放入 [.gitignore](./#) 檔案中。這使您不必總是將令牌複製到命令行中。文件中的每一行都 `.env` 應該包含 `KEY=value` 一對。
+如果你使用 git，請將 `config.json` 文件放入 [.gitignore](./#git-和-gitignore) 檔案中。這使您不必總是將令牌複製到命令行中。文件中的每一行都 `.env` 應該包含 `KEY=value` 一對。
 
 你可以使用 [dotenv](https://www.npmjs.com/package/dotenv) 函數庫進行讀取該檔案。
 
