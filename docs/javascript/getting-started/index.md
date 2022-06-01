@@ -2,7 +2,7 @@
 import CodeGroup from '../../components/CodeGroup.vue'
 </script>
 
-# 入門
+# 安裝
 
 ## 下載 node js
 
