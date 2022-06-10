@@ -11,3 +11,10 @@ fork 專案，更改新增內容後提交 PR
 **2. 使用 Issue 提交**  
 直接在該專案以發起 Issue 的方式提供想要修改/新增的內容
 之後會由維護開發人員將內容更新
+
+## Contributors
+<a href="https://github.com/SHELTER-ZONE/Discord_Bot_FAQ/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SHELTER-ZONE/Discord_Bot_FAQ" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
