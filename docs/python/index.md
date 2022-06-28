@@ -7,7 +7,7 @@ import ErrorMsg from '../components/ErrorMsg.vue'
 
 <Block type="danger" title="問題">
 <div>
-    - 出現紅色下劃波浪線錯誤，表示無法 import disocrod 模組<br>
+    - 出現紅色下劃波浪線錯誤，表示無法 import discord 模組<br>
     - 執行時報錯 <ErrorMsg text="ModuleNotFoundError: No module named 'disocrd'" />
 </div>
 
