@@ -55,15 +55,24 @@ import ErrorMsg from '../components/ErrorMsg.vue'
 
 <Block type="success" title="解決方法">
 
-此為電腦中 discord 網站的憑證未更新而過期導致
-
+### Windows
+原因: 電腦中 Discord 網站的憑證未更新而過期導致
 1. 右鍵管理員權限執行 IE
-2. 到 discord.com 官網
-3. 在網址欄有鎖頭的圖示
-4. 點及鎖頭>檢視憑證>安裝憑證
+2. 前往 https://discord.com
+3. 點擊網站資訊 (網址列左邊，通常為鎖頭符號)
+4. 檢視憑證 > 安裝憑證
 
 ![img](/imgs/ssl_443-2.png)  
 ![img](/imgs/ssl_443-3.png)
+
+### macOS
+原因: Python未安裝SSL憑證
+1. 開啟 Finder
+2. 前往「應用程式」資料夾
+3. 開啟子資料夾「Python 3.x」
+4. 運行「Install Certificates.command」
+
+![img](/imgs/ssl_443-4.png)
 
 </Block>
 
