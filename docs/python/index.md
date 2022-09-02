@@ -344,6 +344,7 @@ discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
 
 如果持续触发速率限制请做出以下调整
 
+### 通用
 1. 检查自身程序
 
 	---
@@ -383,14 +384,18 @@ discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
 	- 如果是非共享ip地址
 		- 提交Issue
 		- 联系Discord support以获取更多细节
+		
+### replit
+
+> <strong>需要协助</strong>
 
 </Block>
 
-## 从旧的dpy 1.X更新至dpy 2.X
+## 从旧的dpy 1.X更新至 2.X
 <Block type="success" title="前言">
-<div>本篇指南意帮助新手快速解决更新到discord.py 2.X的报错</div>
+<div>本篇指南意帮助新手快速解决更新到2.X版本的报错</div>
 
-> 目前未覆盖全部内容，详细完整迁移到dpy 2.X的改动建议查看[官方完整文档](https://discordpy.readthedocs.io/en/latest/migrating.html). 
+> 目前未覆盖全部内容，详细完整迁移到2.X版本的改动建议查看[官方完整文档](https://discordpy.readthedocs.io/en/latest/migrating.html). 
 > 阅读后无法解决请提交Issue.
 
 </Block>
@@ -440,6 +445,14 @@ async def setup(bot):
 async def teardown(bot):
 	...略
 ```
+
+加载cog的函数
+```py
+await bot.load_extension(f'cog')
+```
+
+<details><summary>以下方案作为Bot启动时加载cog的参考</summary>
+
 加载cog的函数(使用setup_hook)
 ```py
 class core(commands.Bot):
@@ -468,6 +481,8 @@ async def main():
 
 asyncio.run(main())
 ```
+
+</details>
 
 </Block>
 
@@ -500,111 +515,7 @@ bot = commands.Bot(command_prefix='?', intents=discord.Intents.all())
 
 选择你的应用，并且在Bot分页里将需要的Intents开启
 
-![img](/imgs/python/migrating-2.0/intents.png)
-
-Intents列表:
-```
-GUILDS (1 << 0)
-  - GUILD_CREATE
-  - GUILD_UPDATE
-  - GUILD_DELETE
-  - GUILD_ROLE_CREATE
-  - GUILD_ROLE_UPDATE
-  - GUILD_ROLE_DELETE
-  - CHANNEL_CREATE
-  - CHANNEL_UPDATE
-  - CHANNEL_DELETE
-  - CHANNEL_PINS_UPDATE
-  - THREAD_CREATE
-  - THREAD_UPDATE
-  - THREAD_DELETE
-  - THREAD_LIST_SYNC
-  - THREAD_MEMBER_UPDATE
-  - THREAD_MEMBERS_UPDATE *
-  - STAGE_INSTANCE_CREATE
-  - STAGE_INSTANCE_UPDATE
-  - STAGE_INSTANCE_DELETE
-
-GUILD_MEMBERS (1 << 1)
-  - GUILD_MEMBER_ADD
-  - GUILD_MEMBER_UPDATE
-  - GUILD_MEMBER_REMOVE
-  - THREAD_MEMBERS_UPDATE *
-
-GUILD_BANS (1 << 2)
-  - GUILD_BAN_ADD
-  - GUILD_BAN_REMOVE
-
-GUILD_EMOJIS_AND_STICKERS (1 << 3)
-  - GUILD_EMOJIS_UPDATE
-  - GUILD_STICKERS_UPDATE
-
-GUILD_INTEGRATIONS (1 << 4)
-  - GUILD_INTEGRATIONS_UPDATE
-  - INTEGRATION_CREATE
-  - INTEGRATION_UPDATE
-  - INTEGRATION_DELETE
-
-GUILD_WEBHOOKS (1 << 5)
-  - WEBHOOKS_UPDATE
-
-GUILD_INVITES (1 << 6)
-  - INVITE_CREATE
-  - INVITE_DELETE
-
-GUILD_VOICE_STATES (1 << 7)
-  - VOICE_STATE_UPDATE
-
-GUILD_PRESENCES (1 << 8)
-  - PRESENCE_UPDATE
-
-GUILD_MESSAGES (1 << 9)
-  - MESSAGE_CREATE
-  - MESSAGE_UPDATE
-  - MESSAGE_DELETE
-  - MESSAGE_DELETE_BULK
-
-GUILD_MESSAGE_REACTIONS (1 << 10)
-  - MESSAGE_REACTION_ADD
-  - MESSAGE_REACTION_REMOVE
-  - MESSAGE_REACTION_REMOVE_ALL
-  - MESSAGE_REACTION_REMOVE_EMOJI
-
-GUILD_MESSAGE_TYPING (1 << 11)
-  - TYPING_START
-
-DIRECT_MESSAGES (1 << 12)
-  - MESSAGE_CREATE
-  - MESSAGE_UPDATE
-  - MESSAGE_DELETE
-  - CHANNEL_PINS_UPDATE
-
-DIRECT_MESSAGE_REACTIONS (1 << 13)
-  - MESSAGE_REACTION_ADD
-  - MESSAGE_REACTION_REMOVE
-  - MESSAGE_REACTION_REMOVE_ALL
-  - MESSAGE_REACTION_REMOVE_EMOJI
-
-DIRECT_MESSAGE_TYPING (1 << 14)
-  - TYPING_START
-
-MESSAGE_CONTENT (1 << 15) **
-
-GUILD_SCHEDULED_EVENTS (1 << 16)
-  - GUILD_SCHEDULED_EVENT_CREATE
-  - GUILD_SCHEDULED_EVENT_UPDATE
-  - GUILD_SCHEDULED_EVENT_DELETE
-  - GUILD_SCHEDULED_EVENT_USER_ADD
-  - GUILD_SCHEDULED_EVENT_USER_REMOVE
-
-AUTO_MODERATION_CONFIGURATION (1 << 20)
-  - AUTO_MODERATION_RULE_CREATE
-  - AUTO_MODERATION_RULE_UPDATE
-  - AUTO_MODERATION_RULE_DELETE
-
-AUTO_MODERATION_EXECUTION (1 << 21)
-  - AUTO_MODERATION_ACTION_EXECUTION
-```
+相关intent细节请查看[Gateway Intents](https://discord.com/developers/docs/topics/gateway#gateway-intents)
 
 </Block>
 
