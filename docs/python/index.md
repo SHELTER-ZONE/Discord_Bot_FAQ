@@ -340,7 +340,7 @@ discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
 </Block>
 
 <Block type="success" title="解決方法">
-通常来说dpy库会自动协调dc的网关返回的速率限制(rate limit)细节去调整以避免持续碰撞速率限制.
+通常来说 dpy 库会自动协调 discord 的网关返回的速率限制(rate limit)去调整以避免持续碰撞速率限制.
 
 如果持续触发速率限制请做出以下调整
 
@@ -365,7 +365,7 @@ discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
 	
 	---
 	
-	检查Bot是否大量持续产生速率限制错误或者持续发送网关事件
+	检查 bot 是否大量持续产生速率限制错误或者持续发送网关事件
 	
 	- 如果是:
 
@@ -377,25 +377,29 @@ discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
 
 2. 检查环境
 
-	- 如果是共享ip地址
+	- 如果是共享 ip 地址
 
-		- 尝试更换ip或服务器提供商
+		- 尝试更换 ip 或服务器提供商
 
 	- 如果是非共享ip地址
-		- 提交Issue
-		- 联系Discord support以获取更多细节
+		- 提交 Issue
+		- 联系 [Discord support](https://support.discord.com/) 以获取更多细节
 		
 ### replit
 
-> <strong>需要协助</strong>
+在 repl.it 的 Shell 输入 `kill 1`
+- 如果失败
+	- 重复 `kill 1`
+	- 联系 repl.it 寻求帮助
+	- 尝试[通用方案](./#通用)
 
 </Block>
 
-## 从旧的dpy 1.X更新至 2.X
+## 从旧的 dpy 1.X 更新至 2.X
 <Block type="success" title="前言">
-<div>本篇指南意帮助新手快速解决更新到2.X版本的报错</div>
+<div>本篇指南意帮助新手快速解决更新到 2.X 版本的报错</div>
 
-> 目前未覆盖全部内容，详细完整迁移到2.X版本的改动建议查看[官方完整文档](https://discordpy.readthedocs.io/en/latest/migrating.html). 
+> 目前未覆盖全部内容，详细完整迁移到 2.X 版本的改动建议查看[官方完整文档](https://discordpy.readthedocs.io/en/latest/migrating.html). 
 > 阅读后无法解决请提交Issue.
 
 </Block>
@@ -409,7 +413,7 @@ discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
 出錯程式：
 
 ---
-需要加载的Cog
+需要加载的 cog
 ```py
 class cog(commands.Cog):
     ...略
@@ -420,7 +424,7 @@ def setup(bot):
 def teardown(bot):
 	...略
 ```
-加载cog的函数
+加载 cog 的函数
 ```py
 bot.load_extension(f'cog')
 ```
@@ -428,12 +432,12 @@ bot.load_extension(f'cog')
 </Block>
 
 <Block type="success" title="解決方法">
-目前dpy2.0重写了bot启动方式并且将load_extension/unload_extension/reload_extension改为异步方式
+目前 dpy2.0 重写了 bot 启动方式并且将 `load_extension/unload_extension/reload_extension` 改为异步方式
 
 修正程式：
 
 ---
-需要加载的Cog
+需要加载的 cog
 ```py
 #你的需要加载的cog
 class cog(commands.Cog):
@@ -446,20 +450,20 @@ async def teardown(bot):
 	...略
 ```
 
-加载cog的函数
+加载 cog 的函数
 ```py
 await bot.load_extension(f'cog')
 ```
 
-<details><summary>以下方案作为Bot启动时加载cog的参考</summary>
+<details><summary>以下方案作为 bot 启动时加载 cog 的参考</summary>
 
-加载cog的函数(使用setup_hook)
+加载 cog 的函数(使用setup_hook)
 ```py
 class core(commands.Bot):
     async def setup_hook(self):
         await self.load_extension(f'cog')
 ```
-加载cog的函数(使用on_ready)
+加载 cog 的函数(使用on_ready)
 ```py	
 class core(commands.Cog):
 	@commands.Cog.listener()
@@ -489,7 +493,7 @@ asyncio.run(main())
 ### xxxx missing 1 required keyword-only argument: 'intents' 或者对事件无反应
 ---
 <Block type="danger" title="問題">
-<div>执行后在 commands.Bot(command_prefix='?') 报错, <ErrorMsg text="TypeError: xxxx missing 1 required keyword-only argument: 'intents'" />或者bot对事件无反应</div>
+<div>执行后在 commands.Bot(command_prefix='?') 报错, <ErrorMsg text="TypeError: xxxx missing 1 required keyword-only argument: 'intents'" />或者 bot 对事件无反应</div>
 
 出錯程式：
 
@@ -501,7 +505,7 @@ bot = commands.Bot(command_prefix='?')
 </Block>
 
 <Block type="success" title="解決方法">
-Discord目前要求使用Intents以控制Bot所能接收的网关事件
+Discord 目前要求使用 Intents 以控制 bot 所能接收的网关事件
 
 修正程式：
 
@@ -513,9 +517,11 @@ bot = commands.Bot(command_prefix='?', intents=discord.Intents.all())
 ---
 前往discord的[开发者页面](https://discord.com/developers/applications)
 
-选择你的应用，并且在Bot分页里将需要的Intents开启
+选择你的应用，并且在 bot 分页里将需要的 Intents 开启
 
-相关intent细节请查看[Gateway Intents](https://discord.com/developers/docs/topics/gateway#gateway-intents)
+![img](/imgs/python/migrating-2.0/intents.png)
+
+相关 Intents 列表和细节请查看[Gateway Intents](https://discord.com/developers/docs/topics/gateway#gateway-intents)
 
 </Block>
 
@@ -523,7 +529,7 @@ bot = commands.Bot(command_prefix='?', intents=discord.Intents.all())
 ### Webhook报错module 'discord' has no attribute xxxx
 ---
 <Block type="danger" title="問題">
-<div>执行Webhook后报错, <ErrorMsg text="module 'discord' has no attribute 'AsyncWebhookAdapter'" />或者<ErrorMsg text="module 'discord' has no attribute 'RequestsWebhookAdapter'" /></div>
+<div>执行 Webhook 后报错, <ErrorMsg text="module 'discord' has no attribute 'AsyncWebhookAdapter'" />或者<ErrorMsg text="module 'discord' has no attribute 'RequestsWebhookAdapter'" /></div>
 
 出錯程式：
 
@@ -542,7 +548,7 @@ webhook.send('Hello World', username='Foo')
 </Block>
 
 <Block type="success" title="解決方法">
-WebhookAdapter类被移除,请使用新的写法
+WebhookAdapter 类被移除,请使用新的写法
 
 修正程式：
 
