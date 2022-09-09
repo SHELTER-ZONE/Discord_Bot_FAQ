@@ -309,3 +309,259 @@ def setup(bot):
 ```
 
 </Block>
+
+## discord.errors.HTTPException: 429 Too Many Requests 
+<Block type="danger" title="問題">
+<div>报错<ErrorMsg text="discord.errors.HTTPException: 429 Too Many Requests " /></div>
+
+报错：
+
+---
+
+```py
+Traceback (most recent call last):
+  File "main.py", line 224, in <module>
+    client.run(TOKEN)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 723, in run
+    return future.result()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 702, in runner
+    await self.start(*args, **kwargs)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 665, in start
+    await self.login(*args, bot=bot)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 511, in login
+    await self.http.static_login(token.strip(), bot=bot)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/http.py", line 300, in static_login
+    data = await self.request(Route('GET', '/users/@me'))
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/http.py", line 216, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: 429 Too Many Requests (error code: 0):
+```
+---
+</Block>
+
+<Block type="success" title="解決方法">
+通常来说 dpy 库会自动协调 discord 的网关返回的速率限制(rate limit)去调整以避免持续碰撞速率限制.
+
+如果持续触发速率限制请做出以下调整
+
+### 通用
+1. 检查自身程序
+
+	---
+	
+	```py
+	bot = commands.Bot(enable_debug_events=True)
+
+	#该方法用于检查是否持续触发错误
+	@bot.event
+	async def on_error(event, *args, **kwargs):
+		print(event)
+
+	#该方法似乎无法稳定触发，故仅作参考
+	@bot.event
+	async def on_socket_raw_send(payload):
+		print(payload)
+	```
+	
+	---
+	
+	检查 bot 是否大量持续产生速率限制错误或者持续发送网关事件
+	
+	- 如果是:
+
+		- 修改代码，减少发送频率，具体限制请参考[官方完整文档](https://discord.com/developers/docs/topics/rate-limits).
+	
+	- 如果不是
+
+		- 检查环境
+
+2. 检查环境
+
+	- 如果是共享 ip 地址
+
+		- 尝试更换 ip 或服务器提供商
+
+	- 如果是非共享ip地址
+		- 提交 Issue
+		- 联系 [Discord support](https://support.discord.com/) 以获取更多细节
+		
+### replit
+
+在 repl.it 的 Shell 输入 `kill 1`
+- 如果失败
+	- 重复 `kill 1`
+	- 联系 repl.it 寻求帮助
+	- 尝试[通用方案](./#通用)
+
+</Block>
+
+## 从旧的 dpy 1.X 更新至 2.X
+<Block type="success" title="前言">
+<div>本篇指南意帮助新手快速解决更新到 2.X 版本的报错</div>
+
+> 目前未覆盖全部内容，详细完整迁移到 2.X 版本的改动建议查看[官方完整文档](https://discordpy.readthedocs.io/en/latest/migrating.html). 
+> 阅读后无法解决请提交Issue.
+
+</Block>
+
+### Runtimewarning: coroutine 'bot.load_extension' was never awaited
+---
+<Block type="danger" title="問題">
+<div>执行后在 bot.load_extension 报错 
+<br><ErrorMsg text="Runtimewarning: coroutine 'Bot.load_extension' was never awaited" /></div>
+
+出錯程式：
+
+---
+需要加载的 cog
+```py
+class cog(commands.Cog):
+    ...略
+
+def setup(bot):
+    bot.add_cog(cog(bot))
+	
+def teardown(bot):
+	...略
+```
+加载 cog 的函数
+```py
+bot.load_extension(f'cog')
+```
+---
+</Block>
+
+<Block type="success" title="解決方法">
+目前 dpy2.0 重写了 bot 启动方式并且将 `load_extension/unload_extension/reload_extension` 改为异步方式
+
+修正程式：
+
+---
+需要加载的 cog
+```py
+#你的需要加载的cog
+class cog(commands.Cog):
+    ...略
+
+async def setup(bot):
+    await bot.add_cog(cog(bot))
+	
+async def teardown(bot):
+	...略
+```
+
+加载 cog 的函数
+```py
+await bot.load_extension(f'cog')
+```
+
+<details><summary>以下方案作为 bot 启动时加载 cog 的参考</summary>
+
+加载 cog 的函数(使用setup_hook)
+```py
+class core(commands.Bot):
+    async def setup_hook(self):
+        await self.load_extension(f'cog')
+```
+加载 cog 的函数(使用on_ready)
+```py	
+class core(commands.Cog):
+	@commands.Cog.listener()
+    async def on_ready(self):
+        await self.bot.load_extension(f'cog')
+```	
+不使用类(使用setup_hook)
+```py
+bot.setup_hook = setup_hook
+async def setup_hook():
+	await bot.load_extension(f'cog')
+```
+不使用类(使用async_with)
+```py
+async def main():
+    async with bot:
+        await bot.load_extension(f'cog')
+        await bot.start(TOKEN)
+
+asyncio.run(main())
+```
+
+</details>
+
+</Block>
+
+### xxxx missing 1 required keyword-only argument: 'intents' 或者对事件无反应
+---
+<Block type="danger" title="問題">
+<div>执行后在 commands.Bot(command_prefix='?') 报错, <ErrorMsg text="TypeError: xxxx missing 1 required keyword-only argument: 'intents'" />或者 bot 对事件无反应</div>
+
+出錯程式：
+
+---
+```py
+bot = commands.Bot(command_prefix='?')
+```
+---
+</Block>
+
+<Block type="success" title="解決方法">
+Discord 目前要求使用 Intents 以控制 bot 所能接收的网关事件
+
+修正程式：
+
+---
+```py
+bot = commands.Bot(command_prefix='?', intents=discord.Intents.all())
+#你也可以只开启你需要的Intents，具体方法请自行查看文档
+```
+---
+前往discord的[开发者页面](https://discord.com/developers/applications)
+
+选择你的应用，并且在 bot 分页里将需要的 Intents 开启
+
+![img](/imgs/python/migrating-2.0/intents.png)
+
+相关 Intents 列表和细节请查看[Gateway Intents](https://discord.com/developers/docs/topics/gateway#gateway-intents)
+
+</Block>
+
+
+### Webhook报错module 'discord' has no attribute xxxx
+---
+<Block type="danger" title="問題">
+<div>执行 Webhook 后报错, <ErrorMsg text="module 'discord' has no attribute 'AsyncWebhookAdapter'" />或者<ErrorMsg text="module 'discord' has no attribute 'RequestsWebhookAdapter'" /></div>
+
+出錯程式：
+
+---
+```py
+async with aiohttp.ClientSession() as session:
+    webhook = discord.Webhook.from_url('url-here', 
+		adapter=discord.AsyncWebhookAdapter(session))
+    await webhook.send('Hello World', username='Foo')
+	
+webhook = discord.Webhook.partial(123456, 'token-here', 
+	adapter=discord.RequestsWebhookAdapter())
+webhook.send('Hello World', username='Foo')
+```
+---
+</Block>
+
+<Block type="success" title="解決方法">
+WebhookAdapter 类被移除,请使用新的写法
+
+修正程式：
+
+---
+```py
+# after
+async with aiohttp.ClientSession() as session:
+    webhook = discord.Webhook.from_url('url-here', session=session)
+    await webhook.send('Hello World', username='Foo')
+	
+webhook = discord.SyncWebhook.partial(123456, 'token-here')
+webhook.send('Hello World', username='Foo')
+```
+---
+
+</Block>
