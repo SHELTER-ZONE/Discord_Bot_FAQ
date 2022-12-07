@@ -5,6 +5,8 @@ import CodeGroup from '../../components/CodeGroup.vue'
 
 # 入門
 
+[本教程參考 Discord.js 官方教學](https://discordjs.guide/)
+
 ## 設定檔
 
 本教學使用 `.env` 檔作為機器人的設定檔，請先安裝 [dotenv](https://www.npmjs.com/package/dotenv) 並建立 `.env` 檔。
